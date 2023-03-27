@@ -17,15 +17,28 @@ function PostList() {
     fetchPosts();
   }, []);
 
-  const handlePostClick = async ({ id }) => {
-    const { data } = await api.get(`/posts/${id}`);
+  const handlePostClick = async (props) => {
+    const { data } = await api.get(`/posts/${props.id}/comments`);
     MySwal.fire({
-      title: <p>{data.title}</p>,
-      html: <p>{data.body}</p>,
+      title: <p>{props.title}</p>,
+      html: (
+        <div>
+          <p className="text-lg font-medium">comentários</p>
+          <ul>
+            {data.map((comment) => (
+              <li
+                className="bg-slate-500 m-2 p-3 rounded-md text-slate-200"
+                key={comment.id}
+              >
+                {comment.body}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ),
+      confirmButtonText: "Fechar",
     });
   };
-  
-  
 
   return (
     <div className="container mx-auto">
@@ -37,11 +50,10 @@ function PostList() {
           <li
             key={post.id}
             className="my-2 cursor-pointer rounded overflow-hidden shadow-lg bg-slate-200"
-            onClick={() => handlePostClick(post.id)}
           >
             <h2 className="text-zinc-500 text-lg font-semibold p-2 flex justify-center">
-              {post.title.slice(0, 25)}
-              {post.title.length > 25 && "..."}
+              {post.title.slice(0, 20)}
+              {post.title.length > 20 && "..."}
             </h2>
             <img
               className="p-2"
@@ -50,6 +62,9 @@ function PostList() {
               width={640}
               height={360}
             />
+            <div className="bg-slate-200 text-indigo-600 p-3 flex justify-center items-center">
+              <button onClick={() => handlePostClick(post)}>ver mais</button>
+            </div>
           </li>
         ))}
       </ul>

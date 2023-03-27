@@ -6,8 +6,8 @@ import NavbarButton from "./NavbarButton";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="bg-slate-600">
-      <nav className="bg-slate-600 p-2">
+    <header className="bg-slate-600 relative mt-32 md:mt-24">
+      <nav className="bg-slate-600 p-2 fixed top-0 w-full">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
@@ -51,31 +51,41 @@ function Header() {
 
         <div className="block md:hidden" id="mobile-menu">
           <NavbarButton onClick={() => setIsOpen(!isOpen)} />
-          <div className={`${isOpen ? 'block' : 'hidden'} md:block mt-4 md:mt-0 md:ml-6`}>
-            <Link
-              to={"/posts"}
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          <div
+            className={`transition-all duration-500 ease-in-out ${
+              isOpen ? "h-48" : "h-0"
+            } bg-slate-600`}
+          >
+            <div
+              className={`transition-all duration-100 ease-in ${
+                isOpen ? "" : "hidden"
+              }`}
             >
-              Posts
-            </Link>
-            <Link
-              to={"/usuarios"}
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Usuários
-            </Link>
-            <Link
-              to={"/contato"}
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Contato
-            </Link>
-            <Link
-              to={"/sobre"}
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Sobre
-            </Link>
+              <Link
+                to={"/posts"}
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Posts
+              </Link>
+              <Link
+                to={"/usuarios"}
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Usuários
+              </Link>
+              <Link
+                to={"/contato"}
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Contato
+              </Link>
+              <Link
+                to={"/sobre"}
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Sobre
+              </Link>
+            </div>
           </div>
         </div>
       </nav>

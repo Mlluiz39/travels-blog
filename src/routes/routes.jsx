@@ -7,7 +7,6 @@ import Posts from "@/pages/Posts";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
-import CommentList from "@/pages/CommentList";
 
 const MyRoutes = () => {
   return (
@@ -18,7 +17,6 @@ const MyRoutes = () => {
       <Route path="/sobre" element={<About />} />
       <Route exact path="/contato" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
-      <Route path="/comment" element={<CommentList />} />
     </Routes>
   );
 };
