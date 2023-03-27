@@ -49,7 +49,7 @@ function PostList() {
         {posts.map((post) => (
           <li
             key={post.id}
-            className="my-2 cursor-pointer rounded overflow-hidden shadow-lg bg-slate-200"
+            className="my-2 cursor-pointer rounded  shadow-lg bg-slate-200"
           >
             <h2 className="text-zinc-500 text-lg font-semibold p-2 flex justify-center">
               {post.title.slice(0, 20)}
