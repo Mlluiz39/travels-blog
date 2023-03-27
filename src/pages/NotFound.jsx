@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Error from '@/assets/404-morte.jpg'
+import Error from '@/assets/404.jpg'
 
 const NotFound = () => {
   return (
