@@ -51,7 +51,7 @@ function ContactPage() {
   return (
     <div>
       <div className="container mx-auto py-8">
-        <h1 className="text-3xl text-center font-bold mb-4">
+        <h1 className="text-3xl text-center font-bold mb-4 text-slate-700">
           Entre em Contato
         </h1>
         <form
